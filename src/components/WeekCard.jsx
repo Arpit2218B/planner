@@ -3,21 +3,28 @@ import Card from './Card';
 import '../styles/Card.css';
 import { db } from '../firebase';
 import { getWeekIndex } from '../utils';
+import { CircularProgress } from '@material-ui/core';
 
 const WeekCard = () => {
 
+    const userId = localStorage.getItem('userId');
+
     const [ data, setData ] = useState([]);
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        db.collection('user').doc('arpit').collection('week').doc(getWeekIndex())
+        setLoading(true);
+        db.collection('user').doc(userId).collection('week').doc(getWeekIndex())
         .get()
         .then(doc => {
             const data = doc.data().data;
             if(data == undefined)
                 data = [];
             setData(data);
+            setLoading(false);
         })
-        .catch(err => setData([]))
+        .catch(err => {setData([]); setLoading(false)})
     }, []);
 
     return (
@@ -32,7 +39,13 @@ const WeekCard = () => {
                         </ul>
                     ) : null}
                 </div>
-            ))}            
+            ))}
+            {loading ? (
+                <CircularProgress />
+            ) : null}
+            {data.length == 0 && !loading ? (
+                <h1>No data added</h1>
+            ) : null}            
         </Card>
     );
 }

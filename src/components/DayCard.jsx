@@ -3,24 +3,29 @@ import Card from './Card';
 import '../styles/Card.css';
 import { db } from '../firebase';
 import { getDayIndex, getWeekIndex } from '../utils';
+import { CircularProgress } from '@material-ui/core';
 
 const DayCard = () => {
 
+    const userId = localStorage.getItem('userId');
+    const [loading, setLoading] = useState(false);
     const today = new Date();
     const date = today.toDateString();
 
     const [ data, setData ] = useState([]);
 
     useEffect(() => {
-        db.collection('user').doc('arpit').collection('day').doc(getDayIndex())
+        setLoading(true);
+        db.collection('user').doc(userId).collection('day').doc(getDayIndex())
         .get()
         .then(doc => {
             const data = doc.data().data;
             if(data == undefined)
                 data = [];
             setData(data);
+            setLoading(false);
         })
-        .catch(err => setData([]))
+        .catch(err => {setData([]); setLoading(false);})
     }, [])
 
     return (
@@ -35,7 +40,13 @@ const DayCard = () => {
                         </ul>
                     ) : null}
                 </div>
-            ))}        
+            ))} 
+            {loading ? (
+                <CircularProgress />
+            ) : null}
+            {data.length == 0 && !loading ? (
+                <h1>No data added</h1>
+            ) : null}       
         </Card>
     );
 }

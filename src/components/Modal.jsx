@@ -24,6 +24,8 @@ const placeHolder = "Enter data in the following format - \n\n" + JSON.stringify
 
 const ModalBody = ({ children, type }) => {
 
+    const userId = localStorage.getItem('userId');
+
     const [ showModal, setShowModal ] = useState(false);
 
     const close = (action, e) => {
@@ -51,7 +53,7 @@ const ModalBody = ({ children, type }) => {
 
     useEffect(() => {
         if(type == 'week') {
-            db.collection('user').doc('arpit').collection('week').doc(getWeekIndex(!currentDay))
+            db.collection('user').doc(userId).collection('week').doc(getWeekIndex(!currentDay))
             .get()
             .then(doc => {
                 const data = doc.data().data;
@@ -66,7 +68,7 @@ const ModalBody = ({ children, type }) => {
             })
         }
         else {
-            db.collection('user').doc('arpit').collection('day').doc(getDayIndex(!currentDay))
+            db.collection('user').doc(userId).collection('day').doc(getDayIndex(!currentDay))
             .get()
             .then(doc => {
                 const data = doc.data().data;
@@ -85,12 +87,12 @@ const ModalBody = ({ children, type }) => {
     const addHandler = () => {
         const data = JSON.parse(subTask);
         if(type === 'week') {
-            db.collection('user').doc('arpit').collection('week').doc(getWeekIndex(!currentDay)).set({data: data})
+            db.collection('user').doc(userId).collection('week').doc(getWeekIndex(!currentDay)).set({data: data})
             .then(res => {alert('Data added')})
             .catch(err => alert('Error adding data'))
         }
         else {
-            db.collection('user').doc('arpit').collection('day').doc(getDayIndex(!currentDay)).set({data: data})
+            db.collection('user').doc(userId).collection('day').doc(getDayIndex(!currentDay)).set({data: data})
             .then(res => {alert('Data added')})
             .catch(err => alert('Error adding data'))
         }
