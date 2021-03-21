@@ -15,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 16px;
+  padding: 0 16px;
   box-sizing: border-box;
   color: #ffffff;
 }
@@ -49,8 +49,10 @@
 
 .dashboard {
   display: flex;
-  justify-content: space-evenly;
+  grid-template-columns: 1fr, 1fr;
+  grid-gap: 2vh;
   width: 100%;
+  /* background-color: green; */
 }
 
 .dashboard__col {
