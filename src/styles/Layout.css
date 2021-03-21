@@ -1,0 +1,48 @@
+.navbar__container {
+  background-color: dodgerblue;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar {
+  height: 5vh;
+  width: 100%;
+  max-width: 1396px;
+  /* background-color: firebrick; */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+
+.body__container {
+  height: 95vh;
+  background-color: gainsboro;
+}
+
+.body {
+  height: 100%;
+  /* background-color: forestgreen; */
+  max-width: 1396px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.dashboard__col {
+  flex: 1;
+}
+
+.toolbar {
+  display: flex;
+}

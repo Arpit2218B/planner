@@ -1,0 +1,103 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black !important;
+}
+.modal .modal__popup {
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 60vw;
+  z-index: 100;
+  border-radius: 6px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.modal .modal__popup .modal__heading {
+  max-height: 15vh;
+  overflow-y: hidden;
+  display: flex;
+}
+.modal .modal__popup .modal__heading h2 {
+  flex-basis: 100%;
+  font-size: 2.5rem;
+  font-weight: 500 !important;
+  outline: none;
+  padding: 6px 0;
+  border-bottom: 1px solid #6b6b6b;
+}
+.modal .modal__popup .modal__heading input {
+  flex-basis: 100%;
+  font-weight: 500;
+  font-size: 2.5rem;
+  padding: 6px 10px;
+  width: 95%;
+  outline: none;
+}
+.modal .modal__popup .modal__tags {
+  margin: 32px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 24px;
+}
+.modal .modal__popup .modal__tags .modal__tag {
+  display: flex;
+  align-items: baseline;
+  padding: 10px;
+  font-size: 1.2rem;
+}
+.modal .modal__popup .modal__tags .modal__tag .key {
+  color: #6b6b6b;
+}
+.modal .modal__popup .modal__tags .modal__tag .value {
+  /* display: flex; */
+  align-items: center;
+  font-size: 1rem;
+  margin-left: 16px;
+}
+.modal .modal__popup .modal__notes {
+  width: 100%;
+}
+.modal .modal__popup .modal__notes .notes {
+  height: 20vh;
+  max-height: 20vh;
+  width: 95%;
+  border: 1px solid #6b6b6b;
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 10px;
+  resize: none;
+  outline: none;
+}
+.modal .modal__popup .modal__button {
+  height: 15vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal .modal__popup .modal__button span {
+  padding: 10px 24px;
+  color: white;
+  background-color: blue;
+  cursor: pointer;
+  margin: 0 16px;
+}
+.modal .modal__popup .modal__button span:hover {
+  border: 1px solid blue;
+}
+.modal .modal__popup .modal__button .modal__close {
+  background-color: white;
+  color: black;
+  outline: 1px solid #ff6347;
+}
+.modal .modal__popup .modal__button .modal__close:hover {
+  border: 1px solid #ff6347;
+}
