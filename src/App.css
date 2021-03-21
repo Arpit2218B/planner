@@ -1,0 +1,24 @@
+button {
+  background-color: dodgerblue;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid dodgerblue;
+}
+
+button:hover {
+  background-color: rgb(25, 122, 219);
+  border: 1px solid rgb(25, 122, 219);
+}
+
+.ghost__button {
+  color: #000000;
+  background-color: inherit;
+}
+
+.ghost__button:hover {
+  background-color: inherit;
+}

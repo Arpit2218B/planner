@@ -4,6 +4,8 @@ import '../styles/Card.css';
 import { db } from '../firebase';
 import { getDayIndex, getWeekIndex } from '../utils';
 import { CircularProgress } from '@material-ui/core';
+import Loading from './Loading';
+import EmptyCard from './EmptyCard';
 
 const DayCard = () => {
 
@@ -42,10 +44,10 @@ const DayCard = () => {
                 </div>
             ))} 
             {loading ? (
-                <CircularProgress />
+                <Loading />
             ) : null}
             {data.length == 0 && !loading ? (
-                <h1>No data added</h1>
+                <EmptyCard type="day" />
             ) : null}       
         </Card>
     );

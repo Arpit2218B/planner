@@ -61,4 +61,19 @@
 
 .toolbar {
   display: flex;
+  justify-content: flex-end;
+  margin: 12px 0;
+}
+
+.toolbar__button {
+  margin-right: 24px;
+}
+
+.loading {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: gray;
 }

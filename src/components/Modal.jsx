@@ -1,5 +1,5 @@
 import { Input } from '@material-ui/core';
-import { Close, CloudCircle } from '@material-ui/icons';
+import { Close, CloseOutlined, CloudCircle } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import '../styles/Modal.css';
@@ -22,7 +22,7 @@ const placeHolder = "Enter data in the following format - \n\n" + JSON.stringify
     }
 ], null, 4);
 
-const ModalBody = ({ children, type }) => {
+const ModalBody = ({ children, type, now }) => {
 
     const userId = localStorage.getItem('userId');
 
@@ -49,7 +49,7 @@ const ModalBody = ({ children, type }) => {
 
     const [task, setTask] = useState(type);
     const [subTask, setSubTask] = useState(undefined);
-    const [currentDay, setCurrentDay] = useState(false);
+    const [currentDay, setCurrentDay] = useState(now);
 
     useEffect(() => {
         if(type == 'week') {
@@ -90,20 +90,29 @@ const ModalBody = ({ children, type }) => {
             db.collection('user').doc(userId).collection('week').doc(getWeekIndex(!currentDay)).set({data: data})
             .then(res => {alert('Data added')})
             .catch(err => alert('Error adding data'))
+            .finally(() => setShowModal(false))
         }
         else {
             db.collection('user').doc(userId).collection('day').doc(getDayIndex(!currentDay)).set({data: data})
             .then(res => {alert('Data added')})
             .catch(err => alert('Error adding data'))
+            .finally(() => setShowModal(false))
         }
     }
 
     const Modal = (
         <div className="modal" onClick={(e) => close(true, e)}>
             <div className="modal__popup" onClick={(e) => close(false, e)}>
-                <input value={task}></input>
+                <div className="modal__close">
+                    <CloseOutlined fontSize="large"  onClick={() => setShowModal(false)} />
+                </div>
+                <h2>{task === 'week' ? 'Add weekly tasks' : 'Add daily tasks'}</h2>
+                <span>(used to add current/next {type} tasks)</span>
+                <div className="modal__controls">
+                    <input type="checkbox" value={currentDay} onChange={() => setCurrentDay(!currentDay)} />
+                    <span>Current {type}</span>
+                </div>
                 <textarea rows={20} placeholder={placeHolder} value={subTask} onChange={(e) => setSubTask(e.target.value)}></textarea>
-                <input type="checkbox" value={currentDay} onChange={() => setCurrentDay(!currentDay)} />
                 <button onClick={addHandler}>Add Data</button>
             </div>
         </div>

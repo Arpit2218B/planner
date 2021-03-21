@@ -8,8 +8,8 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboard__col"> 
-                <WeekCard />
                 <DayCard />
+                <WeekCard />
             </div>
             <div className="dashboard__col">
                 <LogCard />

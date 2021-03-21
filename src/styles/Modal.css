@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,4 +100,27 @@
 }
 .modal .modal__popup .modal__button .modal__close:hover {
   border: 1px solid #ff6347;
+}
+
+.modal__close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal__controls {
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  color: dodgerblue;
+  font-weight: 900;
+}
+
+textarea {
+  margin-bottom: 40px;
+  resize: none;
+  padding: 16px;
+}
+
+.modal__controls > input {
+  margin-right: 16px;
 }
