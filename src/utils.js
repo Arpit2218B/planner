@@ -1,9 +1,9 @@
 export const getDayIndex = (next = false) => {
     let d = new Date();
-    let y = d.toLocaleDateString();
+    let y = d.toDateString();
     if (next) {
         d.setDate(d.getDate() + 1)
-        y = d.toLocaleDateString();
+        y = d.toDateString();
     }
     y = y.replaceAll('/', '-');
     return y;

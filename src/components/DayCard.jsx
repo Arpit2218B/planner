@@ -36,7 +36,7 @@ const DayCard = () => {
             {data.map(task => (
                 <div className="weekTaskData">
                     <h4>{task.task}</h4>
-                    {task.subtask.length > 0 ? (
+                    {task?.subtask?.length > 0 ? (
                         <ul>
                             {task.subtask.map((subTask) => (<li>{subTask}</li>))}
                         </ul>

@@ -109,7 +109,7 @@ const ModalBody = ({ children, type, now }) => {
                 <h2>{task === 'week' ? 'Add weekly tasks' : 'Add daily tasks'}</h2>
                 <span>(used to add current/next {type} tasks)</span>
                 <div className="modal__controls">
-                    <input type="checkbox" value={currentDay} onChange={() => setCurrentDay(!currentDay)} />
+                    <input type="checkbox" checked={currentDay} value={currentDay} onChange={() => setCurrentDay(!currentDay)} />
                     <span>Current {type}</span>
                 </div>
                 <textarea rows={20} placeholder={placeHolder} value={subTask} onChange={(e) => setSubTask(e.target.value)}></textarea>
